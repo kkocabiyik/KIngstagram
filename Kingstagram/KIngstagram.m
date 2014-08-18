@@ -11,8 +11,11 @@
 @implementation KIngstagram
 
 static NSString *accessToken;
+
+static NSString *_baseApiUrl = @"https://api.instagram.com/v1";
 static NSString *_clientId;
 static NSString *_redirectUri;
+
 static UIViewController *_loginViewController;
 
 static void (^loginCompletionBlock)(NSURLRequest *url, id JSON);
@@ -44,8 +47,6 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
     return NO;
     
 }
-
-
 
 +(void) loginWithClientId:(NSString *) clientId redirectUri:(NSString *) redirectUri
                     scope:(NSArray *) scope
@@ -109,7 +110,7 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
    
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:kInstagramAccessToken];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/%@?access_token=%@&%@" , path, accessToken , [KIngstagram dictionaryToQueryString:parameters]]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@?access_token=%@&%@" ,_baseApiUrl ,path ,accessToken , [KIngstagram dictionaryToQueryString:parameters]]]];
     
     NSLog(@"Request:%@" , request.URL.absoluteString);
     
@@ -145,7 +146,7 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
     
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:kInstagramAccessToken];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/%@?access_token=%@" , path, accessToken]]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@?access_token=%@",_baseApiUrl, path, accessToken]]];
     
     [request setHTTPMethod:@"POST"];
     

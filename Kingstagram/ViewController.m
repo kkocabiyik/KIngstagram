@@ -27,10 +27,11 @@
 
 -(IBAction)loginClicked:(id)sender{
     
+    
     [KIngstagram loginWithClientId:@"fa2ec5fef30f419dbc747f9f94e35910" redirectUri:@"http://ovidos.com/redirect" scope: @[@"relationships"]
                  completionHandler:^(NSURLRequest *url, id JSON) {
                      
-                     [KIngstagram postToPath:@"users/186569580/relationship" parameters:@{@"action" : @"follow"} completionHandler:^(NSURLRequest *url, id JSON) {
+                     [KIngstagram requestWithPath:@"users/self/feed" completionHandler:^(NSURLRequest *url, id JSON) {
                          
                          NSLog(@"%@" , JSON);
                          
