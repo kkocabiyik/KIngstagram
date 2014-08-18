@@ -10,7 +10,7 @@
 
 @implementation KIngstagram
 
-
+static NSString *accessToken;
 static NSString *_clientId;
 static NSString *_redirectUri;
 static UIViewController *_loginViewController;
@@ -18,6 +18,7 @@ static UIViewController *_loginViewController;
 static void (^loginCompletionBlock)(NSURLRequest *url, id JSON);
 static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
 
+ NSString * const kInstagramAccessToken = @"accessToken";
 
 + (KIngstagram *)sharedClient {
     
@@ -33,6 +34,19 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
 }
 
 
++(BOOL) userSessionValid{
+    
+    if(accessToken != nil && ![accessToken isEqualToString:@""] ){
+        
+        return YES;
+    };
+    
+    return NO;
+    
+}
+
+
+
 +(void) loginWithClientId:(NSString *) clientId redirectUri:(NSString *) redirectUri
                     scope:(NSArray *) scope
         completionHandler:(void(^)(NSURLRequest *url, id JSON))block
@@ -46,10 +60,8 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
-    
     _loginViewController = [[UIViewController alloc] init];
-    
-    
+
     _loginViewController.view = [[UIView alloc] initWithFrame:window.bounds];
     
     _loginViewController.view.backgroundColor = [UIColor redColor];
@@ -91,18 +103,11 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
 }
 
 
-+(void) requestWithPath:(NSString *) path completionHandler:(void(^)(NSURLRequest *url, id JSON))block
-         failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
- 
-    [self requestWithPath:path parameters:nil completionHandler:block failureHandler:failureHandler];
-    
-}
-
 
 +(void) requestWithPath:(NSString *) path parameters:(NSDictionary *) parameters completionHandler:(void(^)(NSURLRequest *url, id JSON))block
          failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
    
-    NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:@"accessToken"];
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:kInstagramAccessToken];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/%@?access_token=%@&%@" , path, accessToken , [KIngstagram dictionaryToQueryString:parameters]]]];
     
@@ -125,10 +130,20 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
 }
 
 
++(void) requestWithPath:(NSString *) path completionHandler:(void(^)(NSURLRequest *url, id JSON))block
+         failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
+    
+    [self requestWithPath:path parameters:nil completionHandler:block failureHandler:failureHandler];
+    
+}
+
+
+
+
 +(void) postToPath:(NSString *) path parameters:(NSDictionary *) parameters completionHandler:(void(^)(NSURLRequest *url, id JSON))block
          failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
     
-    NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:@"accessToken"];
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:kInstagramAccessToken];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/%@?access_token=%@" , path, accessToken]]];
     
@@ -138,6 +153,8 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
     
     [request setHTTPBody:data];
     
+    NSLog(@"Request:%@" , request.URL.absoluteString);
+   
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         if(connectionError == nil){
@@ -189,27 +206,24 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
     
     if([urlString rangeOfString:_redirectUri].location != NSNotFound && [urlString rangeOfString:@"https://instagram.com/oauth/authorize/"].location == NSNotFound){
         
-        NSRange accessToken = [urlString rangeOfString: @"#access_token="];
-        if (accessToken.location != NSNotFound) {
+        NSRange acToken = [urlString rangeOfString: @"#access_token="];
+        if (acToken.location != NSNotFound) {
             
             
-            NSString *accessTokenValue = [urlString substringFromIndex: NSMaxRange(accessToken)];
+            accessToken = [urlString substringFromIndex: NSMaxRange(acToken)];
             
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             
-            [userDefaults setValue:accessTokenValue forKey:@"accessToken"];
+            [userDefaults setValue:accessToken forKey:@"accessToken"];
             
             [_loginViewController dismissViewControllerAnimated:NO completion:nil];
             
-            loginCompletionBlock(request, accessTokenValue);
+            loginCompletionBlock(request, accessToken);
             loginCompletionBlock = nil;
             loginFailureBlock = nil;
             _loginViewController = nil;
-           
             
         }
-        
-       
         
         return NO;
     }
