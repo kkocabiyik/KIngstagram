@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FBF25A0519A1F383001AD8A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF25A0419A1F383001AD8A3 /* main.m */; };
+		FBF25A0819A1F383001AD8A3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF25A0719A1F383001AD8A3 /* AppDelegate.m */; };
+		FBF25A0B19A1F383001AD8A3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF25A0A19A1F383001AD8A3 /* ViewController.m */; };
+		FBF25A0E19A1F383001AD8A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF25A0C19A1F383001AD8A3 /* Main.storyboard */; };
+		FBF25A1019A1F383001AD8A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF25A0F19A1F383001AD8A3 /* Images.xcassets */; };
+		FBF25A1C19A1F383001AD8A3 /* KingstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF25A1B19A1F383001AD8A3 /* KingstagramTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FBF25A1619A1F383001AD8A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBF259F719A1F383001AD8A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBF259FE19A1F383001AD8A3;
+			remoteInfo = Kingstagram;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FBF259FF19A1F383001AD8A3 /* Kingstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kingstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF25A0319A1F383001AD8A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBF25A0419A1F383001AD8A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FBF25A0619A1F383001AD8A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FBF25A0719A1F383001AD8A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FBF25A0919A1F383001AD8A3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FBF25A0A19A1F383001AD8A3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FBF25A0D19A1F383001AD8A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FBF25A0F19A1F383001AD8A3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FBF25A1519A1F383001AD8A3 /* KingstagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KingstagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBF25A1A19A1F383001AD8A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBF25A1B19A1F383001AD8A3 /* KingstagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KingstagramTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FBF259FC19A1F383001AD8A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBF25A1219A1F383001AD8A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FBF259F619A1F383001AD8A3 = {
+			isa = PBXGroup;
+			children = (
+				FBF25A0119A1F383001AD8A3 /* Kingstagram */,
+				FBF25A1819A1F383001AD8A3 /* KingstagramTests */,
+				FBF25A0019A1F383001AD8A3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FBF25A0019A1F383001AD8A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FBF259FF19A1F383001AD8A3 /* Kingstagram.app */,
+				FBF25A1519A1F383001AD8A3 /* KingstagramTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FBF25A0119A1F383001AD8A3 /* Kingstagram */ = {
+			isa = PBXGroup;
+			children = (
+				FBF25A0619A1F383001AD8A3 /* AppDelegate.h */,
+				FBF25A0719A1F383001AD8A3 /* AppDelegate.m */,
+				FBF25A0919A1F383001AD8A3 /* ViewController.h */,
+				FBF25A0A19A1F383001AD8A3 /* ViewController.m */,
+				FBF25A0C19A1F383001AD8A3 /* Main.storyboard */,
+				FBF25A0F19A1F383001AD8A3 /* Images.xcassets */,
+				FBF25A0219A1F383001AD8A3 /* Supporting Files */,
+			);
+			path = Kingstagram;
+			sourceTree = "<group>";
+		};
+		FBF25A0219A1F383001AD8A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FBF25A0319A1F383001AD8A3 /* Info.plist */,
+				FBF25A0419A1F383001AD8A3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FBF25A1819A1F383001AD8A3 /* KingstagramTests */ = {
+			isa = PBXGroup;
+			children = (
+				FBF25A1B19A1F383001AD8A3 /* KingstagramTests.m */,
+				FBF25A1919A1F383001AD8A3 /* Supporting Files */,
+			);
+			path = KingstagramTests;
+			sourceTree = "<group>";
+		};
+		FBF25A1919A1F383001AD8A3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FBF25A1A19A1F383001AD8A3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FBF259FE19A1F383001AD8A3 /* Kingstagram */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBF25A1F19A1F383001AD8A3 /* Build configuration list for PBXNativeTarget "Kingstagram" */;
+			buildPhases = (
+				FBF259FB19A1F383001AD8A3 /* Sources */,
+				FBF259FC19A1F383001AD8A3 /* Frameworks */,
+				FBF259FD19A1F383001AD8A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kingstagram;
+			productName = Kingstagram;
+			productReference = FBF259FF19A1F383001AD8A3 /* Kingstagram.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FBF25A1419A1F383001AD8A3 /* KingstagramTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBF25A2219A1F383001AD8A3 /* Build configuration list for PBXNativeTarget "KingstagramTests" */;
+			buildPhases = (
+				FBF25A1119A1F383001AD8A3 /* Sources */,
+				FBF25A1219A1F383001AD8A3 /* Frameworks */,
+				FBF25A1319A1F383001AD8A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FBF25A1719A1F383001AD8A3 /* PBXTargetDependency */,
+			);
+			name = KingstagramTests;
+			productName = KingstagramTests;
+			productReference = FBF25A1519A1F383001AD8A3 /* KingstagramTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FBF259F719A1F383001AD8A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Ovidos Creative";
+				TargetAttributes = {
+					FBF259FE19A1F383001AD8A3 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					FBF25A1419A1F383001AD8A3 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = FBF259FE19A1F383001AD8A3;
+					};
+				};
+			};
+			buildConfigurationList = FBF259FA19A1F383001AD8A3 /* Build configuration list for PBXProject "Kingstagram" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FBF259F619A1F383001AD8A3;
+			productRefGroup = FBF25A0019A1F383001AD8A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FBF259FE19A1F383001AD8A3 /* Kingstagram */,
+				FBF25A1419A1F383001AD8A3 /* KingstagramTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FBF259FD19A1F383001AD8A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBF25A0E19A1F383001AD8A3 /* Main.storyboard in Resources */,
+				FBF25A1019A1F383001AD8A3 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBF25A1319A1F383001AD8A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FBF259FB19A1F383001AD8A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBF25A0B19A1F383001AD8A3 /* ViewController.m in Sources */,
+				FBF25A0819A1F383001AD8A3 /* AppDelegate.m in Sources */,
+				FBF25A0519A1F383001AD8A3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBF25A1119A1F383001AD8A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBF25A1C19A1F383001AD8A3 /* KingstagramTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FBF25A1719A1F383001AD8A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBF259FE19A1F383001AD8A3 /* Kingstagram */;
+			targetProxy = FBF25A1619A1F383001AD8A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FBF25A0C19A1F383001AD8A3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBF25A0D19A1F383001AD8A3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FBF25A1D19A1F383001AD8A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FBF25A1E19A1F383001AD8A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FBF25A2019A1F383001AD8A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Kingstagram/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FBF25A2119A1F383001AD8A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Kingstagram/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FBF25A2319A1F383001AD8A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Kingstagram.app/Kingstagram";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KingstagramTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		FBF25A2419A1F383001AD8A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Kingstagram.app/Kingstagram";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = KingstagramTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FBF259FA19A1F383001AD8A3 /* Build configuration list for PBXProject "Kingstagram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBF25A1D19A1F383001AD8A3 /* Debug */,
+				FBF25A1E19A1F383001AD8A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBF25A1F19A1F383001AD8A3 /* Build configuration list for PBXNativeTarget "Kingstagram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBF25A2019A1F383001AD8A3 /* Debug */,
+				FBF25A2119A1F383001AD8A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FBF25A2219A1F383001AD8A3 /* Build configuration list for PBXNativeTarget "KingstagramTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBF25A2319A1F383001AD8A3 /* Debug */,
+				FBF25A2419A1F383001AD8A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FBF259F719A1F383001AD8A3 /* Project object */;
+}
