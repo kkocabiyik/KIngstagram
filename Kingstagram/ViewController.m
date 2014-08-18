@@ -28,10 +28,10 @@
 -(IBAction)loginClicked:(id)sender{
     
     
-    [KIngstagram loginWithClientId:@"fa2ec5fef30f419dbc747f9f94e35910" redirectUri:@"http://ovidos.com/redirect" scope: @[@"relationships"]
+    [KIngstagram loginWithClientId:@"client_id" redirectUri:@"http://ovidos.com/redirect" scope: @[@"relationships"]
                  completionHandler:^(NSURLRequest *url, id JSON) {
                      
-                     [KIngstagram requestWithPath:@"users/self/feed" completionHandler:^(NSURLRequest *url, id JSON) {
+                     [KIngstagram requestWithPath:@"media/search" parameters:@{ @"lat" : @"41.057266"  , @"lng" : @"29.010238" } completionHandler:^(NSURLRequest *url, id JSON) {
                          
                          NSLog(@"%@" , JSON);
                          
