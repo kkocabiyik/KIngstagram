@@ -21,7 +21,7 @@ static UIViewController *_loginViewController;
 static void (^loginCompletionBlock)(NSURLRequest *url, id JSON);
 static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
 
- NSString * const kInstagramAccessToken = @"accessToken";
+NSString * const kInstagramAccessToken = @"accessToken";
 
 + (KIngstagram *)sharedClient {
     
@@ -39,10 +39,23 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
 
 +(BOOL) userSessionValid{
     
+    
     if(accessToken != nil && ![accessToken isEqualToString:@""] ){
         
         return YES;
     };
+    
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *str =
+    [userDefaults valueForKey:kInstagramAccessToken];
+    
+    if(str != nil && ![str isEqualToString:@""]){
+        
+        accessToken = str;
+        return YES;
+    }
+    
     
     return NO;
     
@@ -62,7 +75,7 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
     _loginViewController = [[UIViewController alloc] init];
-
+    
     _loginViewController.view = [[UIView alloc] initWithFrame:window.bounds];
     
     _loginViewController.view.backgroundColor = [UIColor redColor];
@@ -90,7 +103,7 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
     [webView loadRequest:urlRequest];
     
     [window.rootViewController presentViewController:_loginViewController animated:YES completion:nil];
-
+    
     
 }
 
@@ -100,14 +113,14 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
            failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
     
     [self loginWithClientId:clientId redirectUri:redirectUri scope:nil completionHandler:block failureHandler:failureHandler];
-   
+    
 }
 
 
 
 +(void) requestWithPath:(NSString *) path parameters:(NSDictionary *) parameters completionHandler:(void(^)(NSURLRequest *url, id JSON))block
          failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
-   
+    
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:kInstagramAccessToken];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@?access_token=%@&%@" ,_baseApiUrl ,path ,accessToken , [KIngstagram dictionaryToQueryString:parameters]]]];
@@ -142,7 +155,7 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
 
 
 +(void) postToPath:(NSString *) path parameters:(NSDictionary *) parameters completionHandler:(void(^)(NSURLRequest *url, id JSON))block
-         failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
+    failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
     
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:kInstagramAccessToken];
     
@@ -155,7 +168,7 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
     [request setHTTPBody:data];
     
     NSLog(@"Request:%@" , request.URL.absoluteString);
-   
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         if(connectionError == nil){
@@ -215,14 +228,16 @@ static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
             
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             
-            [userDefaults setValue:accessToken forKey:@"accessToken"];
+            [userDefaults setValue:accessToken forKey:kInstagramAccessToken];
             
-            [_loginViewController dismissViewControllerAnimated:NO completion:nil];
+            [_loginViewController dismissViewControllerAnimated:NO completion:^{
+                loginCompletionBlock(request, accessToken);
+                loginCompletionBlock = nil;
+                loginFailureBlock = nil;
+                _loginViewController = nil;
+            }];
             
-            loginCompletionBlock(request, accessToken);
-            loginCompletionBlock = nil;
-            loginFailureBlock = nil;
-            _loginViewController = nil;
+            
             
         }
         
