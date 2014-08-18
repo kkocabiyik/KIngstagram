@@ -13,6 +13,7 @@
 		FBF25A0E19A1F383001AD8A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBF25A0C19A1F383001AD8A3 /* Main.storyboard */; };
 		FBF25A1019A1F383001AD8A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF25A0F19A1F383001AD8A3 /* Images.xcassets */; };
 		FBF25A1C19A1F383001AD8A3 /* KingstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF25A1B19A1F383001AD8A3 /* KingstagramTests.m */; };
+		FBF25A2719A1F397001AD8A3 /* KIngstagram.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF25A2619A1F397001AD8A3 /* KIngstagram.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		FBF25A1519A1F383001AD8A3 /* KingstagramTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KingstagramTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF25A1A19A1F383001AD8A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBF25A1B19A1F383001AD8A3 /* KingstagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KingstagramTests.m; sourceTree = "<group>"; };
+		FBF25A2519A1F397001AD8A3 /* KIngstagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIngstagram.h; sourceTree = "<group>"; };
+		FBF25A2619A1F397001AD8A3 /* KIngstagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIngstagram.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 		FBF25A0119A1F383001AD8A3 /* Kingstagram */ = {
 			isa = PBXGroup;
 			children = (
+				FBF25A2519A1F397001AD8A3 /* KIngstagram.h */,
+				FBF25A2619A1F397001AD8A3 /* KIngstagram.m */,
 				FBF25A0619A1F383001AD8A3 /* AppDelegate.h */,
 				FBF25A0719A1F383001AD8A3 /* AppDelegate.m */,
 				FBF25A0919A1F383001AD8A3 /* ViewController.h */,
@@ -215,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBF25A2719A1F397001AD8A3 /* KIngstagram.m in Sources */,
 				FBF25A0B19A1F383001AD8A3 /* ViewController.m in Sources */,
 				FBF25A0819A1F383001AD8A3 /* AppDelegate.m in Sources */,
 				FBF25A0519A1F383001AD8A3 /* main.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KIngstagram.h"
 
 @interface ViewController : UIViewController
 
