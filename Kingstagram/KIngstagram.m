@@ -1,6 +1,6 @@
 //
 //  KIngstagram.m
-//  KIngstagram
+//  InstaType
 //
 //  Created by Kemal Kocabiyik on 8/18/14.
 //  Copyright (c) 2014 Ovidos Creative. All rights reserved.
@@ -10,18 +10,14 @@
 
 @implementation KIngstagram
 
-static NSString *accessToken;
 
-static NSString *_baseApiUrl = @"https://api.instagram.com/v1";
 static NSString *_clientId;
 static NSString *_redirectUri;
-
 static UIViewController *_loginViewController;
 
 static void (^loginCompletionBlock)(NSURLRequest *url, id JSON);
 static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
 
-NSString * const kInstagramAccessToken = @"accessToken";
 
 + (KIngstagram *)sharedClient {
     
@@ -37,30 +33,6 @@ NSString * const kInstagramAccessToken = @"accessToken";
 }
 
 
-+(BOOL) userSessionValid{
-    
-    
-    if(accessToken != nil && ![accessToken isEqualToString:@""] ){
-        
-        return YES;
-    };
-    
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *str =
-    [userDefaults valueForKey:kInstagramAccessToken];
-    
-    if(str != nil && ![str isEqualToString:@""]){
-        
-        accessToken = str;
-        return YES;
-    }
-    
-    
-    return NO;
-    
-}
-
 +(void) loginWithClientId:(NSString *) clientId redirectUri:(NSString *) redirectUri
                     scope:(NSArray *) scope
         completionHandler:(void(^)(NSURLRequest *url, id JSON))block
@@ -74,7 +46,9 @@ NSString * const kInstagramAccessToken = @"accessToken";
     
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
+    
     _loginViewController = [[UIViewController alloc] init];
+    
     
     _loginViewController.view = [[UIView alloc] initWithFrame:window.bounds];
     
@@ -117,13 +91,20 @@ NSString * const kInstagramAccessToken = @"accessToken";
 }
 
 
++(void) requestWithPath:(NSString *) path completionHandler:(void(^)(NSURLRequest *url, id JSON))block
+         failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
+    
+    [self requestWithPath:path parameters:nil completionHandler:block failureHandler:failureHandler];
+    
+}
+
 
 +(void) requestWithPath:(NSString *) path parameters:(NSDictionary *) parameters completionHandler:(void(^)(NSURLRequest *url, id JSON))block
          failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
     
-    NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:kInstagramAccessToken];
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:@"accessToken"];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@?access_token=%@&%@" ,_baseApiUrl ,path ,accessToken , [KIngstagram dictionaryToQueryString:parameters]]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/%@?access_token=%@&%@" , path, accessToken , [KIngstagram dictionaryToQueryString:parameters]]]];
     
     NSLog(@"Request:%@" , request.URL.absoluteString);
     
@@ -144,30 +125,18 @@ NSString * const kInstagramAccessToken = @"accessToken";
 }
 
 
-+(void) requestWithPath:(NSString *) path completionHandler:(void(^)(NSURLRequest *url, id JSON))block
-         failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
-    
-    [self requestWithPath:path parameters:nil completionHandler:block failureHandler:failureHandler];
-    
-}
-
-
-
-
 +(void) postToPath:(NSString *) path parameters:(NSDictionary *) parameters completionHandler:(void(^)(NSURLRequest *url, id JSON))block
     failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
     
-    NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:kInstagramAccessToken];
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:@"accessToken"];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@?access_token=%@",_baseApiUrl, path, accessToken]]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/%@?access_token=%@" , path, accessToken]]];
     
     [request setHTTPMethod:@"POST"];
     
     NSData *data = [[self dictionaryToQueryString:parameters] dataUsingEncoding:NSUTF8StringEncoding];
     
     [request setHTTPBody:data];
-    
-    NSLog(@"Request:%@" , request.URL.absoluteString);
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
@@ -220,26 +189,27 @@ NSString * const kInstagramAccessToken = @"accessToken";
     
     if([urlString rangeOfString:_redirectUri].location != NSNotFound && [urlString rangeOfString:@"https://instagram.com/oauth/authorize/"].location == NSNotFound){
         
-        NSRange acToken = [urlString rangeOfString: @"#access_token="];
-        if (acToken.location != NSNotFound) {
+        NSRange accessToken = [urlString rangeOfString: @"#access_token="];
+        if (accessToken.location != NSNotFound) {
             
             
-            accessToken = [urlString substringFromIndex: NSMaxRange(acToken)];
+            NSString *accessTokenValue = [urlString substringFromIndex: NSMaxRange(accessToken)];
             
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             
-            [userDefaults setValue:accessToken forKey:kInstagramAccessToken];
+            [userDefaults setValue:accessTokenValue forKey:@"accessToken"];
             
-            [_loginViewController dismissViewControllerAnimated:NO completion:^{
-                loginCompletionBlock(request, accessToken);
-                loginCompletionBlock = nil;
-                loginFailureBlock = nil;
-                _loginViewController = nil;
-            }];
+            [_loginViewController dismissViewControllerAnimated:NO completion:nil];
             
+            loginCompletionBlock(request, accessTokenValue);
+            loginCompletionBlock = nil;
+            loginFailureBlock = nil;
+            _loginViewController = nil;
             
             
         }
+        
+        
         
         return NO;
     }
