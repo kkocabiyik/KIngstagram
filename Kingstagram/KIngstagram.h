@@ -1,12 +1,14 @@
 //
 //  KIngstagram.h
-//  InstaType
+//  KIngstagram
 //
 //  Created by Kemal Kocabiyik on 8/18/14.
 //  Copyright (c) 2014 Ovidos Creative. All rights reserved.
 //
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+
+static NSString *accessToken;
 
 @interface KIngstagram : NSObject <UIWebViewDelegate>
 
@@ -31,5 +33,7 @@
 
 +(void) postToPath:(NSString *) path parameters:(NSDictionary *) parameters completionHandler:(void(^)(NSURLRequest *url, id JSON))block
     failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler;
+
++(BOOL) userSessionValid;
 
 @end
