@@ -21,7 +21,7 @@ static UIViewController *_loginViewController;
 static void (^loginCompletionBlock)(NSURLRequest *url, id JSON);
 static void (^loginFailureBlock)(NSURLRequest *url, NSError *error);
 
-NSString * const kInstagramAccessToken = @"accessToken";
+ NSString * const kInstagramAccessToken = @"accessToken";
 
 + (KIngstagram *)sharedClient {
     
@@ -51,12 +51,12 @@ NSString * const kInstagramAccessToken = @"accessToken";
     [userDefaults valueForKey:kInstagramAccessToken];
     
     if(str != nil && ![str isEqualToString:@""]){
-        
+     
         accessToken = str;
         return YES;
     }
     
-    
+
     return NO;
     
 }
@@ -75,7 +75,7 @@ NSString * const kInstagramAccessToken = @"accessToken";
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     
     _loginViewController = [[UIViewController alloc] init];
-    
+
     _loginViewController.view = [[UIView alloc] initWithFrame:window.bounds];
     
     _loginViewController.view.backgroundColor = [UIColor redColor];
@@ -103,7 +103,7 @@ NSString * const kInstagramAccessToken = @"accessToken";
     [webView loadRequest:urlRequest];
     
     [window.rootViewController presentViewController:_loginViewController animated:YES completion:nil];
-    
+
     
 }
 
@@ -113,14 +113,14 @@ NSString * const kInstagramAccessToken = @"accessToken";
            failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
     
     [self loginWithClientId:clientId redirectUri:redirectUri scope:nil completionHandler:block failureHandler:failureHandler];
-    
+   
 }
 
 
 
 +(void) requestWithPath:(NSString *) path parameters:(NSDictionary *) parameters completionHandler:(void(^)(NSURLRequest *url, id JSON))block
          failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
-    
+   
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:kInstagramAccessToken];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@?access_token=%@&%@" ,_baseApiUrl ,path ,accessToken , [KIngstagram dictionaryToQueryString:parameters]]]];
@@ -155,7 +155,7 @@ NSString * const kInstagramAccessToken = @"accessToken";
 
 
 +(void) postToPath:(NSString *) path parameters:(NSDictionary *) parameters completionHandler:(void(^)(NSURLRequest *url, id JSON))block
-    failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
+         failureHandler:(void(^)(NSURLRequest *url, NSError *error)) failureHandler{
     
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] valueForKey:kInstagramAccessToken];
     
@@ -168,7 +168,7 @@ NSString * const kInstagramAccessToken = @"accessToken";
     [request setHTTPBody:data];
     
     NSLog(@"Request:%@" , request.URL.absoluteString);
-    
+   
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         if(connectionError == nil){
